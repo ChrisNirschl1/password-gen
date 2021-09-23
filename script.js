@@ -1,12 +1,59 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var numbers = [0,1,2,3,4,5,6,7,8,9];
+var lowerCase = ["a","b","c","d", "e", "f", "g", "h", "i","j","k","l","m","n","o","p","q","r","s", "t","u","v","w","x", "y", "z"];
+var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var special = ["!","@", "#", "$", "%"]
+var lengthSelect;
+var userNumbers;
+var userSpec;
+var userLower;
+var userUpper;
+var password= "123456";
+var possChars = []
+
 
 // Write password to the #password input
 function writePassword() {
+  console.log ("12345");
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
+}
+
+function generatePassword(){
+userLength();
+
+}
+
+function userLength() {
+  lengthSelect = prompt("How many characters do you want in the password between 8 and 128?");
+  if (lengthSelect > 128 || lengthSelect < 8) {
+    alert("Choose character length between 8 and 128");
+    userLength();
+  }
+  else {
+    userInputs();
+  }
+}
+
+
+function userInputs() {
+  userNumbers = confirm("Do you want numbers in your password");
+  userSpec = confirm("Do you want special characters in your password?");
+  userLower = confirm("Do you want lower case letters in your password?");
+  userUpper = confirm("Do you want upper case letters in your password?");
+  if (!userNumbers && !userSpec && !userLower && !userUpper) {
+    alert("Choose at least one option");
+    userInputs()
+  } else {
+if (userNumbers == true){
+  console.log("numbers");
+  possChars.concat(numbers);
+}
+  }
 
 }
 
@@ -26,10 +73,16 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
+
+
+
+
+
+
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
 //ToDo: Write the generatePassword function
-//When prompted for length of password
+//When prompted for length of password xxx
 //Then choose a legth of at least 8 chars and less than 128
 //ToDo: ask user how may chars they want in password > use a prompt that will set a var>make sure information is correct> number> 8+ or 128- 
 // THEN I am presented with a series of prompts for password criteria
@@ -50,3 +103,6 @@ generateBtn.addEventListener("click", writePassword);
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
 //ToDo: take our return array and use array method to convert to a string > have a var for this and return string 
+
+
+
