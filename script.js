@@ -10,10 +10,10 @@ var userSpec;
 var userLower;
 var userUpper;
 var randArr = [];
-var final = [];
+var finArr = [];
 
 
-// // Write password to the #password input
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -26,7 +26,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
+// Write password to the #password input
 function generatePassword() {
 
   //password length
@@ -34,6 +34,7 @@ function generatePassword() {
   lengthSelect = prompt("How many characters do you want in the password between 8 and 128?");
   if (lengthSelect > 128 || lengthSelect < 8) {
     alert("Choose character length between 8 and 128");
+    
     
   }
 
@@ -59,12 +60,12 @@ function generatePassword() {
   } if (userUpper == true) {
     randArr = randArr.concat(upperCase);
   }
-
+//for loop randomizes randArr and pushes it into final array
   for (var i = 0; i < lengthSelect; i++) {
-    var randPass = randArr(Math.floor(math.random() * lengthSelect));
-    final.push(randPass);
+    var randPass = randArr[(Math.floor(Math.random() * lengthSelect))];
+    finArr.push(randPass);
   }
-  return final.join("").toString();
+  return finArr.join("").toString();
 }
 
 
