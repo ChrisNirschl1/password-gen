@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+//Declaring variables
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -19,8 +20,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-  if(password =="Click again to re-do") {
+//function is stopped if criteria not met, looped back here to rerun the whole generate password function again
+  if (password == "re-do") {
     writePassword()
   } else {
     passwordText.value = password;
@@ -40,12 +41,10 @@ function generatePassword() {
   lengthSelect = prompt("How many characters do you want in the password between 8 and 128?");
   if (lengthSelect > 128 || lengthSelect < 8) {
     alert("Choose character length between 8 and 128");
-    return "Click again to re-do"
-    
-    
+    return "re-do"
   }
 
-  //inputs
+  //inputs from user
 
   userNumbers = confirm("Do you want numbers in your password");
   userSpec = confirm("Do you want special characters in your password?");
@@ -53,8 +52,8 @@ function generatePassword() {
   userUpper = confirm("Do you want upper case letters in your password?");
   if (!userNumbers && !userSpec && !userLower && !userUpper) {
     alert("Choose at least one option");
-    return "Click again to re-do"
-    
+    return "re-do"
+
   } else {
     if (userNumbers == true) {
       randArr = randArr.concat(numbers);
@@ -68,12 +67,12 @@ function generatePassword() {
   }
 
 
-//for loop randomizes randArr and pushes it into final array
+  //for loop randomizes randArr and pushes it into final array
   for (var i = 0; i < lengthSelect; i++) {
     var randPass = randArr[(Math.floor(Math.random() * lengthSelect))];
     finArr.push(randPass);
   }
-
+//Turns the final array into a string joined together 
   return finArr.join("").toString();
 }
 
